@@ -1,0 +1,22 @@
+{
+  "development": {
+    "username": "root",
+    "password": "P35c@d0r3",
+    "database": "local_voter",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "test": {
+    "username": "user",
+    "password": "MockTurb0Stu#ing",
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
+}

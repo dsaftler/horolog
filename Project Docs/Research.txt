@@ -1,0 +1,54 @@
+https://www.entrepreneur.com/article/269991
+https://clockify.me/freelance-time-tracking
+https://www.freelancer.com/desktop-app/
+https://docs.google.com/document/d/1UnlKxqs0Hz3zWRdYXNLuNuOy3E7D92m3DGvmS8UGmPA/edit?usp=sharing
+
+https://thewirecutter.com/reviews/best-time-tracking-apps-for-freelancers/
+1. Toggl: 9/mo billed yearly
+2. Harvest: 12/mo billed monthly or $130/annual
+3. Timular:  $54/ 1st 6 mo,  with timer device, $9/mo 
+
+Who this is for
+We researched, interviewed, and tested for this guide with a freelancer’s mind-set. We wanted to find the software that best allows someone to track their hours so they can then bill for them. By “freelancer,” we mean anyone who works for a client that is not their full-time employer, in nearly any field. And we focused on solo practitioners instead of teams. Most of the apps we tested are aimed at those who work from a computer—writing, designing, programming, Web-based tasks, and the like. But we made sure that our picks would still work for offline tasks, whether you time them with a phone app or post-fill a timesheet with the app. Even though my job as a Wirecutter writer is mostly about working at a computer, I’m sometimes building standing desks, cutting up piles of cardboard boxes, donating goods to nonprofits, or doing other work tasks not involving a screen. Plenty of freelancers may have similar computer-free tasks, and a good time tracker should be able to adapt to those occasions.
+
+How we picked
+There are dozens—probably more than 100—brand-name time-tracking apps available, and most of them seem functionally identical. We assembled a list of 18 apps from our experts’ recommendations, other publications’ reviews, Wirecutter staff’s experience, and Web searching. Because the marketing and feature lists for time-tracking software is so similar, we installed 14 of the 18 apps we considered, to see what they actually did and what they felt like to use.
+
+If an app is no better than your own brain and the most basic computer functions, it’s not worth paying for.
+
+To narrow down the field, we prioritized apps that had these aspects and features:
+
+Support for more than one computer platform or browser: People switch computers and platforms, sometimes of their own accord or sometimes when they switch jobs. You shouldn’t be locked out of a tracking system because it only works with certain operating systems, phones, or browser extensions.
+A free trial or limited free plan: You should be able to use the software for at least one workweek with every feature enabled, to see how it logs your work and fits into your routine. Some apps limit the features or scope of their trial software in a way that makes it hard to tell if it’s right for you.
+Plans or pricing that work for freelancers: Since our guide is aimed at solo practitioners, we avoided apps that were priced or centered on teams or were priced like something only a corporation could afford.
+Mobile options: You probably don’t do all of your work at your computer, and sometimes you need to track things like conference calls or meetings in your off-hours or your travel time while away from your desk. Good mobile tracking apps can control timers, show time balances, and, ideally, notify you when a timer is running unusually long or has been stopped during normal working hours.
+Useful integrations: No time tracker can offer everything for everyone, but we preferred apps that offered a variety of useful hooks into commonly used apps (like Slack, Basecamp, G Suite, Office, Asana, and more) to cover more work setups.
+Data export: Many apps tout the beautiful graphs, charts, or reports their tracking can produce, but you need to export that data to CSV if you’re going to be able to further analyze it or keep it after you stop using the service. The best tracking apps allow you to keep the data you generated in portable formats.
+Not just a fancy spreadsheet or timer: By the same token, if an app didn’t offer much more than a fancy interface for manually entering the work you were doing or controlling a timer for it, we didn’t test it. If an app is no better than your own brain and the most basic computer functions, it’s not worth paying for.
+Many software packages offer additional features or higher-cost bundles that cover things we didn’t consider for this guide, since they seemed less important (or less affordable) for freelancers. Among those features we didn’t test or assess:
+
+Project management tools that involve teammates and create deadline projections (though having a time tracker that integrates with those tools can be helpful)
+Employee time monitoring for an employer to review (such as keystroke/mouse/Web monitoring)
+Revenue-forecasting tools that track lots of clients and teammates
+We should note here that we were not looking for apps that watch everything you do on a computer, like RescueTime. Those apps are meant for employers tracking their employees or eliminating time sinks. They may be useful in tandem with a time-tracking app, but be sure to read the privacy policy to see what you’re getting into.
+
+How we tested
+We tested our semifinal tracking app candidates by installing them and using them to track our work on this and other Wirecutter guides. That meant tracking the time spent on research, writing, email, Slack and video conversations, and other typical computer work. We used these seven time-tracking apps, each for at least a full day:
+
+FreshBooks
+Harvest
+Toggl
+Timeular
+Timeneye
+Timely
+TMetric
+We set up projects and tasks in each app and created reports (where possible), as if to bill our editor for the work we did. In using each app on a Mac, on our phones, and in a Chrome browser on other computers, we kept notes on our experiences. We looked for an experience that was substantially better than just entering time into a spreadsheet.
+
+More specifically, we evaluated what it was like to use each time tracker when it came to:
+
+Manual time tracking: Most timers are pretty simple button-pushing affairs, but there’s nuance between apps. The best ones allow you to create new projects in the moment, which we liked. Apps that limit time entries to existing projects and tasks require more setup, and in our testing they were less convenient. Good apps provide shortcuts to easy tracking, like letting you click once to start a previous timer again, rather than making you pick and assign projects and tasks to each session.
+Editing time entries: The best apps in our assessments didn’t make correcting time feel like punishment. Being able to edit entries from a browser button or a menu bar drop-down was best. Offering a choice between editing duration (“55 minutes”) and start/stop times (“12:05–1:00 p.m.”) was better than requiring one method or the other.
+Automatic time tracking: Having an app or browser extension watch for certain keywords in applications or windows can be a handy backstop against forgetting to track your time. But that's only if it is an optional feature that results in easy single-button tracking (as with Toggl) and not the cause of a lot of prompts and interruptions (as with Paydirt).
+App integrations: Some apps do a good job of inserting small timer buttons into Web apps like Google Docs or connecting to other apps for invoicing. Other options we considered seemed to simply clutter up Web apps or not make it clear how their integrations work.
+Creating billing-ready reports: We didn’t look for fully structured invoices with all apps, but we wanted to see our numbers in a form that would make it easy to bill for our time. Customization was a big benefit—being able to see minute-by-minute detail or broad project totals and change things up quickly.
+Watchful timing: Most tracking apps offer to automatically stop a timer after a certain period, lack of activity, or time of day. The best apps offer a wider variety of these prompts and will let you customize them to fit your schedule and habits.
