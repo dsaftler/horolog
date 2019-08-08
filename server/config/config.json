@@ -2,10 +2,11 @@
   "development": {
     "username": "root",
     "password": "P35c@d0r3",
-    "database": "local_voter",
+    "database": "horolog",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
+   
   },
   "test": {
     "username": "user",
@@ -13,10 +14,12 @@
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
-    "logging": false
+     "logging": true
+  
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+  "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql",
+    "logging": false
   }
 }

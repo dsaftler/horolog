@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS horolog;
+CREATE DATABASE horolog;
