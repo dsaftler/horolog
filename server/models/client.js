@@ -18,5 +18,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
+  // console.log('create client');
   return Client;
 }

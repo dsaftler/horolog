@@ -49,6 +49,6 @@ module.exports = function (sequelize, DataTypes) {
       null
     );
   });
-
+  // console.log('create user');
   return User;
 };

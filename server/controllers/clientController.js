@@ -1,5 +1,6 @@
 //TODO convert this to MySQL
 const db = require("../models");
+console.log('clientController');
 
 module.exports = function (app) {
   // GET route for getting all of the client

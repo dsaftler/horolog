@@ -2,16 +2,16 @@
 const db = require("../models");
 
 // Defining methods for the booksController
-module.exports = function (app) {
+module.exports = {
   // GET route for getting all of the block
-  app.get("/api/blocks/", function (req, res) {
+  findAll: function (req, res) {
     db.Block.findAll({})
       .then(function (dbBlock) {
         res.json(dbBlock);
       });
-  });
+  },
   // Get route for retrieving a single block
-  app.get("/api/blocks/:id", function (req, res) {
+  findByPk:  function (req, res) {
     db.Block.findOne({
       where: {
         id: req.params.id
@@ -20,20 +20,24 @@ module.exports = function (app) {
       .then(function (dbBlock) {
         res.json(dbBlock);
       });
-  });
+  },
   // POST route for saving a new block
   // bdate, minutes, edate, is_submitted & is_booked should be set to default  values
-  app.post("/api/blocks", function (req, res) {
+ create:  function (req, res) {
     console.log(req.body);
     db.Block.create({
       notes: req.body.notes,
-      curclass: req.body.curclass
+      curclass: req.body.curclass,
+      projectId: req.body.projectId,
+      userId: req.body.userId
     })
+    // todo : how do I pass in the foreign key projectId and userId?
+    // https://stackoverflow.com/questions/52776491/unable-to-insert-id-into-a-table-that-belongs-to-a-foreign-key-referenced-table
       .then(function (dbBlock) {
         res.json(dbBlock);
       });
-  });
-  app.delete("/api/blocks/:id", function (req, res) {
+  },
+  destroy: function (req, res) {
     db.Block.destroy({
       where: {
         id: req.params.id
@@ -42,9 +46,9 @@ module.exports = function (app) {
       .then(function (dbBlock) {
         res.json(dbBlock);
       });
-  });
+  },
   // PUT route for updating block
-  app.put("/api/block", function (req, res) {
+  update:  function (req, res) {
     db.Block.update(req.body,
       {
         where: {
@@ -54,5 +58,5 @@ module.exports = function (app) {
       .then(function (dbBlock) {
         res.json(dbBlock);
       });
-  });
+  }
 };

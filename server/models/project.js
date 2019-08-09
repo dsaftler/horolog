@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 
 module.exports = function(sequelize, DataTypes) {
+  // console.log('create project 4');
   const Project = sequelize.define('projects', {
     brief: {
       type: DataTypes.STRING,
@@ -30,5 +31,6 @@ module.exports = function(sequelize, DataTypes) {
   //     }
   //   });
   // };
+  // console.log('create project');
   return Project;
 }

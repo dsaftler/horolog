@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // app.use('/users', Users);
 app.use(session ({
   store: new FileStore(FileStoreOptions),
-  secret: 'keyboard Cat',
+  secret: 'onomatopoeia',
   resave: false,
   saveUninitialized: false,  
 }));
@@ -49,16 +49,7 @@ app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// Routes for data access
-// TODO do I need html-routes in a React application?
-// require('./routes/html-routes.js')(app);
-// require('./routes/api/project-routes.js')(app);
-// require('./routes/api/block-routes.js');
-// require('./routes/api/client-routes.js')(app);
-// require('./routes/api/user-routes.js')(app)
-// Send every request to the React app
-// Define any API routes before this runs
-console.log('public url: ', process.env.PUBLIC_URL)
+
 app.use(routes);
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
