@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import LoginForm from './pages/login_form';
 import SignupForm from './pages/signup_form';
 import Login from './pages/login';
+import Signup from './pages/signup.js';
 import Block from './pages/block';
 import Client from './pages/client';
 import Project from './pages/project';
@@ -40,12 +41,13 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path ='/' component={Login} />
-          <Route exact path= '/block' component={Block} />
-          <Route exact path= '/client' component={Client} />
-          <Route exact path= '/project' component={Project} />
-          <Route exact path= '/report' component={Report_Params} />
-          <Route exact path='/time' component={Time_Sheet} />
-          <Route component={NoMatch} />
+          <Route exact path = '/signup' component={Signup} />
+          <Route exact path = '/block' component={Block} />
+          <Route exact path = '/client' component={Client} />
+          <Route exact path = '/project' component={Project} />
+          <Route exact path = '/report' component={Report_Params} />
+          <Route exact path = '/time' component={Time_Sheet} />
+          <Route component = {NoMatch} />
 
         </Switch>
       </div>

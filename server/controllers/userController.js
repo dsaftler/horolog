@@ -80,17 +80,27 @@ module.exports = function (app) {
   });
   // POST route for saving a new user
   // bdate and is_archived should be set to default values
-  app.post("/api/users", function (req, res) {
-    console.log(req.body);
+  app.post('../api/signup', function (req, res) {
     db.User.create({
-      username: req.body.username,
-      password: req.body.password,
-      role: req.body.role
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      password: req.body.password
+      // role: req.body.role
     })
-      .then(function (dbUser) {
-        res.json(dbUser);
+      .then(function () {
+        res.redirect(307, '../api/login');
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+        console.log(err);
       });
+      console.log(db.User);
+    .then(function (dbUser) {
+      res.json(dbUser);
+    });
   });
+  
   app.delete("/api/users/:id", function (req, res) {
     db.User.destroy({
       where: {

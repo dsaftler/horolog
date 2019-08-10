@@ -3,9 +3,12 @@ let passport = require('../../config/passport');
 module.exports = app =>{
   app.post('../api/signup', function (req, res) {
     db.User.create({
-      username: req.body.username,
-      password: req.body.password,
-      role: req.body.role
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email
+      password: req.body.password
+    
+      // role: req.body.role
     })
     .then(function () {
       res.redirect(307, '../api/login');
