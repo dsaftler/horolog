@@ -13,7 +13,7 @@ const Signup = () => {
         <Col size="md-12">
           <Jumbotron>
             <h1>Sign Up</h1>
-    <form onSubmit = {handleSubmit}>
+            <form action='api/user-routes/signup' method='POST'>
       <div>
         <label>First Name</label>
         <input type='text' name='firstname' onChange={handleInputChange} value={inputs.firstname} required />

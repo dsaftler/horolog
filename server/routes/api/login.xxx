@@ -21,7 +21,7 @@ module.exports = app => {
     // console.log(db.User);
   });
 
-  app.post("/api/login/", function (req, res, next) {
+  app.post("/", function (req, res, next) {
     passport.authenticate("local", {
       successRedirect: "/bills/all",
       failureRedirect: "/login"

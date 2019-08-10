@@ -1,8 +1,9 @@
 // TODO change the router setup
 const dbBlocks = require("express").Router();
 const blockController = require("../../controllers/blockController");
-
-// Matches with "/api/blocks"
+dbBlocks.route('/test')
+.get(() => console.log('test'))
+// Matches with "/block-routes/blocks"
 dbBlocks.route("/blocks")
  .get(blockController.findAll)
  .post(blockController.create);

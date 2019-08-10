@@ -1,17 +1,19 @@
 // TODO change the router setup
-const dbUsers = require("express").Router();
+const dbUser = require("express").Router();
 const userController = require("../../controllers/userController");
 
-// Matches with "/api/books"
-// router.route("/")
-//   .get(blocksController.findAll)
-//   .post(blocksController.create);
 
+// Matches with "/user-routes/signup"
+dbUser.route("/signup")
+  .post(userController.signup);
+dbUser.route('/login')
+  .post(userController.login);
+dbUser.route('/logout')
+  .post(userController.logout);
 // // Matches with "/api/books/:id"
-// router
-//   .route("/:id")
-//   .get(blocksController.findById)
-//   .put(blocksController.update)
-//   .delete(blocksController.remove);
+dbUser.route("/:id")
+  // .get(userController.findById)
+  // .put(userController.update)
+  // .delete(userController.remove);
 
-module.exports = dbUsers;
+module.exports = dbUser;
