@@ -1,4 +1,6 @@
 //TODO convert this to MySQL
+const Sequelize = require('sequelize')
+const SQLValues = require('sequelize-values')()
 
 const db = require('../models');
 const passport = require("../config/passport");
@@ -8,22 +10,33 @@ console.log('userController');
 // module.exports = function (app)
 module.exports = {
   signup: function (req, res) {
-    console.log(req.body);
-      db.User.create({
+    console.log(`userController.signup ${req.body.lastname}`);
+    
+      db.users.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password1
     })
-      // role: req.body.role
-      // .then(function () {
-    .then(newUser => {
-        console.log(`New user ${newUser.firstname}, with id ${newUser.id} has been created.`);
-    })
+    .then(function () {
+      return res.status(200).res.jsonp([body])
+        // { message: "user created", userid: users.id  });
+        })
     .catch(function (err) {
-        res.status(401).json(err);
-        console.log(err);
-      })
+      console.log(JSON.parse(JSON.stringify(err)));
+      return res.redirect('/signup')
+        })
+    // .catch(function (err) {
+    //   return res.status(400).json({ message: "issues trying to connect to database" });
+    //     })
+    // .then(newUser => {
+    //     console.log(`New user ${newUser.firstname}, with id ${newUser.id} has been created.`);
+    //     res.redirect(307, "/users/login");
+    // })
+    // .catch(function (err) {
+    //   console.log(err);
+    //   res.status(401).json(err);
+    //   })
     // .then(function (dbUser) {
     //   res.json(dbUser);
 
@@ -32,13 +45,12 @@ module.exports = {
     app.post("/", function (req, res, next) {
       passport.authenticate("local", {
         successRedirect: "/blocks",
-        failureRedirect: "/login"
-      })(req, res, next);
-      // const { email, state, zip, username, uid }= req.body;
-      // console.log(req.session);
-      // res.send(req.session);
-      // console.log(dbUser);
-      // return res.redirect('../api/billtrack50/billsJson.js')
+        failureRedirect: "/users/login"
+      })
+      // .then {
+        //  req.session.userId = res.userId
+        // send info as json
+       (req, res, next);
     });
   },
   logout: function (req, res) {
@@ -110,7 +122,7 @@ module.exports = {
     */
   //! })
   // GET route for getting all of the user
-  // app.get("/api/users/", function (req, res) {
+  // app.get("/users/", function (req, res) {
   //   console.log(`api users`);
     
   //   db.User.findAll({})
@@ -119,7 +131,7 @@ module.exports = {
   //     });
   // });
   // // Get route for retrieving a single user
-  // // app.get("/api/users/:id", function (req, res) {
+  // // app.get("/users/:id", function (req, res) {
   //   db.User.findOne({
   //     where: {
   //       id: req.params.id
@@ -153,7 +165,7 @@ module.exports = {
   //       //   res.json(dbUser);
     
   //   })
-  // app.delete("/api/users/:id", function (req, res) {
+  // app.delete("/users/:id", function (req, res) {
   //   db.User.destroy({
   //     where: {
   //       id: req.params.id
@@ -164,7 +176,7 @@ module.exports = {
   //     });
   // });
   // // PUT route for updating user
-  // app.put("/api/user", function (req, res) {
+  // app.put("/user", function (req, res) {
   //   db.User.update(req.body,
   //     {
   //       where: {

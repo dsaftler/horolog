@@ -1,20 +1,16 @@
-let bcrypt = require("bcryptjs");
+const Sequelize = require('sequelize')
+const bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
   let User = sequelize.define("users", {
     // The email cannot be null, and must be a proper email before creation
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: false
-      }
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: 'Email address already in use!'
+     },
       validate: {
         isEmail: true
       }

@@ -1,10 +1,10 @@
 // TODO change the router setup
 const dbUser = require("express").Router();
-const userController = require("../../controllers/userController");
+const userController = require("../controllers/userController");
 
 
-// Matches with "/user-routes/signup"
-dbUser.route("/signup")
+// Matches with "/users/"
+dbUser.route('/signup')
   .post(userController.signup);
 dbUser.route('/login')
   .post(userController.login);

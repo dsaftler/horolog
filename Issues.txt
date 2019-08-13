@@ -1,0 +1,104 @@
+Does my config.json with my db password get published on the web?
+How do I do two ports?
+Need to convert the controller to MySQL syntax
+What is config for sequelize?
+http://links.splash.events/wf/click?upn=UTvcgVzGNEbHsXNbwDEE6PVQY7Lt0a-2FkrvtWIArCmMFGKXmZKdJ1IZ2vXxJuycQ-2F_-2FE9Ag8N-2F0XasxNcvh0B0JAXpR70orEH-2Fc4i7BxjpuTVNR3ZlTCQSJ1cuPKs2cTjWdTnnS8s0SFpZOI5nxEbnpXOpfHEr5xnX254-2BG7B-2BYXciBEZWmRjsABCMuICTpu5t-2F142L8EWNPCqen-2BY4xVC1gxRK85ZXQgM5WMAd862te7sLZ19ozKvo3v5tQTY-2BMfwZsJNbleEJByqp2JsYh-2ByxD2j4B54SggPGj2-2FlslSbmlMpWQ7JKDmVMiXZFqtQT7J3J1eHQS9c5XkPMNELwXztPQLme0zK6g6ZbJkuIf1zCT3XvfuDnswzSIQ3a0clqS0GOZidctJuF2Wzy1NL-2BPgk4d0AodcjJkNNt5-2F-2Bk5dIRg-3D
+
+login_20190805221441  20190805 10:14:41
+
+set time control allows . as :
+allows no minutes to 00
+allows military 13 -> 1pm
+stop timer panel shows starting time and calculates time & increments automatically
+
+
+req.query
+This property is an object containing a property for each query string parameter in the route. If there is no query string, it is the empty object, {}.
+
+As req.query’s shape is based on user-controlled input, all properties and values in this object are untrusted and should be validated before trusting. For example, req.query.foo.toString() may fail in multiple ways, for example foo may not be there or may not be a string, and toString may not be a function and instead a string or other user-input.
+
+// GET /search?q=tobi+ferret
+console.dir(req.query.q)
+// => 'tobi ferret'
+
+// GET /shoes?order=desc&shoe[color]=blue&shoe[type]=converse
+console.dir(req.query.order)
+// => 'desc'
+
+console.dir(req.query.shoe.color)
+// => 'blue'
+
+console.dir(req.query.shoe.type)
+// => 'converse'
+
+// GET /shoes?color[]=blue&color[]=black&color[]=red
+console.dir(req.query.color)
+// => ['blue', 'black', 'red']
+
+ou can pass an object as the value parameter; it is then serialized as JSON and parsed by bodyParser() middleware.
+
+res.cookie(name, value [, options])
+Sets cookie name to value. The value parameter may be a string or object converted to JSON.
+res.cookie('cart', { items: [1, 2, 3] })
+res.cookie('cart', { items: [1, 2, 3] }, { maxAge: 900000 })
+
+res.end([data] [, encoding])
+Ends the response process. This method actually comes from Node core, specifically the response.end() method of http.ServerResponse.
+
+Use to quickly end the response without any data. If you need to respond with data, instead use methods such as res.send() and res.json().
+
+res.end()
+res.status(404).end()
+
+res.format({
+  'text/plain': function () {
+    res.send('hey')
+  },
+
+  'text/html': function () {
+    res.send('<p>hey</p>')
+  },
+
+  'application/json': function () {
+    res.send({ message: 'hey' })
+  },  OR 
+  json: function () {
+    res.send({ message: 'hey' })
+  }
+
+  'default': function () {
+    // log the request and respond with 406
+    res.status(406).send('Not Acceptable')
+  }
+})
+
+res.jsonp([body])
+Sends a JSON response with JSONP support. This method is identical to res.json(), except that it opts-in to JSONP callback support.
+
+res.jsonp(null)
+// => callback(null)
+
+res.jsonp({ user: 'tobi' })
+// => callback({ "user": "tobi" })
+
+res.status(500).jsonp({ error: 'message' })
+// => callback({ "error": "message" })
+By default, the JSONP callback name is simply callback. Override this with the jsonp callback name setting.
+
+The following are some examples of JSONP responses using the same code:
+
+// ?callback=foo
+res.jsonp({ user: 'tobi' })
+// => foo({ "user": "tobi" })
+
+app.set('jsonp callback name', 'cb')
+
+// ?cb=foo
+res.status(500).jsonp({ error: 'message' })
+// => foo({ "error": "message" })
+
+res.send('<p>some html</p>')
+When the parameter is an Array or Object, Express responds with the JSON representation:
+
+res.send({ user: 'tobi' })
+res.send([1, 2, 3])

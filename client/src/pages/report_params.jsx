@@ -10,7 +10,11 @@ function Report_Params() {
         <Col size="md-12">
           <Jumbotron>
             <h1>Report Parameters</h1>
-
+            <Link to={'./home'}>
+              <button variant="raised">
+                Home
+                </button>
+            </Link>
           </Jumbotron>
         </Col>
       </Row>

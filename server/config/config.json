@@ -1,12 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "testtest",
+    "password": "P35c@d0r3",
     "database": "horolog",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql",
     "logging": false
-   
   },
   "test": {
     "username": "user",

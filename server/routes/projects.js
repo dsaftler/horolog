@@ -1,6 +1,6 @@
 // TODO change the router setup
-const dbClients = require("express").Router();
-const clientController = require("../../controllers/clientController");
+const dbProjects = require("express").Router();
+const projectController = require("../controllers/projectController");
 
 // Matches with "/api/books"
 // router.route("/")
@@ -14,4 +14,4 @@ const clientController = require("../../controllers/clientController");
 //   .put(blocksController.update)
 //   .delete(blocksController.remove);
 
-module.exports = dbClients;
+module.exports = dbProjects;

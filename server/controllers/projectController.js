@@ -128,14 +128,14 @@ module.exports = function (app) {
   // wil be 50
 //! })
 
-  app.get("/api/projects/", function (req, res) {
+  app.get("/projects/", function (req, res) {
     db.Project.findAll({})
       .then(function (dbProject) {
         res.json(dbProject);
       });
   });
     // Get route for retrieving a single project
-  app.get("/api/projects/:id", function (req, res) {
+  app.get("/projects/:id", function (req, res) {
     db.Project.findOne({
       where: {
         id: req.params.id
@@ -147,7 +147,7 @@ module.exports = function (app) {
   });
   // POST route for saving a new project
   // bdate and is_archived should be set to default values
-  app.post("/api/projects", function (req, res) {
+  app.post("/projects", function (req, res) {
     console.log(req.body);
     db.Project.create({
       brief: req.body.brief,
@@ -158,7 +158,7 @@ module.exports = function (app) {
         res.json(dbProject);
       });
   });
-  app.delete("/api/projects/:id", function (req, res) {
+  app.delete("/projects/:id", function (req, res) {
     db.Project.destroy({
       where: {
         id: req.params.id
@@ -169,7 +169,7 @@ module.exports = function (app) {
       });
   });
   // PUT route for updating project
-  app.put("/api/project", function (req, res) {
+  app.put("/project", function (req, res) {
     db.Project.update(req.body,
       {
         where: {

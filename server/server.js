@@ -36,6 +36,7 @@ app.use(session ({
   secret: 'onomatopoeia',
   resave: false,
   saveUninitialized: false,  
+  path: './sessions'
 }));
 app.use(passport.initialize());
 app.use(passport.session());

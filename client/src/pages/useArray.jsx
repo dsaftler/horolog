@@ -10,7 +10,7 @@ export const useArray = initial => {
       //   e.g. <button onClick={() => array.add(Math.random())}>ADD</button>
       clear: useCallback(() => setValue(() => [])),
       //   e.g. <button onClick={array.clear}>CLEAR</button>
-      removeById: useCallback(id => setValue(arr => arr.filter(v => && v.id !== id))),
+      removeById: useCallback(id => setValue(arr => arr.filter(v =>  v.id !== id))),
       //   e.g. <button onClick={() => array.removeById(id)}>DELETE</button>
       removeIndex: useCallback(index => setValue(v => {
         v.splice(index, 1);

@@ -1,12 +1,14 @@
-import React, { Component } from "react";
-import Select from 'react-select';
-import Creatable from 'react-select/creatable';
-import makeAnimated from 'react-select/animated';
-import Radio from '@material-ui/core/Radio';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// import Select from 'react-select';
+// import Creatable from 'react-select/creatable';
+// import makeAnimated from 'react-select/animated';
+// import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+// import FormControl from '@material-ui/core/FormControl';
+// import FormLabel from '@material-ui/core/FormLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import {useProjectForm} from "./CustomHooks.jsx"
 import { Col, Row, Container } from "../components/Grid";
@@ -23,8 +25,13 @@ function Project() {
       <Row>
         <Col size="md-12">
           <Jumbotron>
+              <Link to={'/'}>
+                <button variant="raised">
+                  Home
+                </button>
+              </Link>
             <h1>Project</h1>
-            <form onSubmit={handleSubmit}>
+            <form action='/project/create' method='POST'>
               <div>
                 <label>Client</label>
                 <select onChange={handleInputChange} value={inputs.value}>
@@ -43,7 +50,7 @@ function Project() {
                 <TextareaAutosize name='narrative' onChange={handleInputChange} value={inputs.narrative}></TextareaAutosize>
                 </div>
               <div>
-                  <RadioGroup aria-label="position" name="position" value={"DEV"} onChange={handleInputChange} row>
+                  <RadioGroup aria-label="defclass" name="defclass" value={""} onChange={handleInputChange} value={inputs.value}>
                     <FormControlLabel
                       value="DEV"
                       control={<Radio />}
@@ -61,7 +68,7 @@ function Project() {
               <div>
                 <label>Archived: </label>
                 {/* //Todo  what is boolean?  how to call the data */}
-                  <input type="checkbox" name="is_archived" value='' onChange={handleInputChange} value={inputs.is_archived} />
+                  <input type="checkbox" name="is_archived" onChange={handleInputChange} value={inputs.is_archived} />
               </div>
               <button type='submit'>Save</button>
             </form>
@@ -70,7 +77,7 @@ function Project() {
       </Row>
     </Container>
   );
-  // }
+
 }
 
 export default Project;
