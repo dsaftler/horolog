@@ -1,18 +1,15 @@
 //TODO convert this to MySQL
 const Sequelize = require('sequelize')
 const SQLValues = require('sequelize-values')()
-
 const db = require('../models');
 const passport = require("../config/passport");
-console.log('userController');
-
 
 // module.exports = function (app)
 module.exports = {
-  signup: function (req, res) {
+  signup: function (req, res) {    
     console.log(`userController.signup ${req.body.lastname}`);
-    
-      db.users.create({
+    const body = req.body;
+    db.users.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
@@ -25,21 +22,7 @@ module.exports = {
     .catch(function (err) {
       console.log(JSON.parse(JSON.stringify(err)));
       return res.redirect('/signup')
-        })
-    // .catch(function (err) {
-    //   return res.status(400).json({ message: "issues trying to connect to database" });
-    //     })
-    // .then(newUser => {
-    //     console.log(`New user ${newUser.firstname}, with id ${newUser.id} has been created.`);
-    //     res.redirect(307, "/users/login");
-    // })
-    // .catch(function (err) {
-    //   console.log(err);
-    //   res.status(401).json(err);
-    //   })
-    // .then(function (dbUser) {
-    //   res.json(dbUser);
-
+    })
   },
   login: function (req, res) {
     app.post("/", function (req, res, next) {
@@ -47,17 +30,31 @@ module.exports = {
         successRedirect: "/blocks",
         failureRedirect: "/users/login"
       })
-      // .then {
-        //  req.session.userId = res.userId
-        // send info as json
-       (req, res, next);
-    });
-  },
+        // .then {
+          //  req.session.userId = res.userId
+          // send info as json
+          (req, res, next);
+        });
+      },
   logout: function (req, res) {
     req.logout();
     res.redirect("/");
   },
-
+}
+  // .catch(function (err) {
+  //   return res.status(400).json({ message: "issues trying to connect to database" });
+  //     })
+  // .then(newUser => {
+  //     console.log(`New user ${newUser.firstname}, with id ${newUser.id} has been created.`);
+  //     res.redirect(307, "/users/login");
+  // })
+  // .catch(function (err) {
+  //   console.log(err);
+  //   res.status(401).json(err);
+  //   })
+  // .then(function (dbUser) {
+  //   res.json(dbUser);
+      
   // app.get("/logout", function (req, res) {
   //   req.logout();
   //   res.redirect("/");
@@ -187,4 +184,3 @@ module.exports = {
   //       res.json(dbUser);
   //     });
   // });
-}

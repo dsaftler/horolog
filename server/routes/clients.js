@@ -2,16 +2,16 @@
 const dbClients = require("express").Router();
 const clientController = require("../controllers/clientController");
 
-// Matches with "/api/books"
-// router.route("/")
-//   .get(blocksController.findAll)
-//   .post(blocksController.create);
+dbClients.route("/clients")
+  .post(clientController.create)
+  .get(clientController.findAll);
 
-// // Matches with "/api/books/:id"
+// Matches with "/api/blocks/:id"
 // router
-//   .route("/:id")
-//   .get(blocksController.findById)
-//   .put(blocksController.update)
-//   .delete(blocksController.remove);
+dbClients.route("/clients:id")
+  .get(clientController.findByPk)
+  .put(clientController.update)
+  .delete(clientController.destroy);
+// console.log('block-routes')
 
 module.exports = dbClients;

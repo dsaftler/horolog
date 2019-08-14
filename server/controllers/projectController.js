@@ -2,7 +2,68 @@
 const db = require("../models");
 
 // Defining methods for the booksController
-module.exports = function (app) {
+module.exports =  {
+  create: function (req, res) {
+    const body = req.body;
+    console.log(`projectController.project ${req.body.name}`);
+ 
+    db.projects.create({
+      brief: req.body.brief,
+      narrative: req.body.narrative,
+      defclass: req.body.defclass
+    })
+      .then(function (dbProject) {
+        res.json(dbProject);
+      });
+  },
+  // .get("/projects/", 
+  findAll: function (req, res) {
+    db.projects.findAll({})
+      .then(function (dbProject) {
+        res.json(dbProject);
+      });
+  },
+  // Get route for retrieving a single project
+  // app.get("/projects/:id", 
+  findByPk: function (req, res) {
+    db.projects.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbProject) {
+        res.json(dbProject);
+      });
+  },
+  // POST route for saving a new project
+  //  is_active should be set to default  values
+  // app.post("/projects", 
+  update: function (req, res) {
+    console.log(req.body);
+    // app.put("/project", function (req, res) {
+    db.projects.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbProject) {
+        res.json(dbProject);
+      });
+  },
+
+  // app.delete("/projects/:id", 
+  destroy: function (req, res) {
+    db.projects.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbProject) {
+        res.json(dbProject);
+      });
+  }
+}      
   // search for known ids
   //!Project.find(123).success(function (project) {
     // project will be an instance of Project and stores the content of the table entry
@@ -128,56 +189,5 @@ module.exports = function (app) {
   // wil be 50
 //! })
 
-  app.get("/projects/", function (req, res) {
-    db.Project.findAll({})
-      .then(function (dbProject) {
-        res.json(dbProject);
-      });
-  });
-    // Get route for retrieving a single project
-  app.get("/projects/:id", function (req, res) {
-    db.Project.findOne({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(function (dbProject) {
-        res.json(dbProject);
-      });
-  });
   // POST route for saving a new project
   // bdate and is_archived should be set to default values
-  app.post("/projects", function (req, res) {
-    console.log(req.body);
-    db.Project.create({
-      brief: req.body.brief,
-      narrative: req.body.narrative,
-      defclass: req.body.defclass
-    })
-      .then(function (dbProject) {
-        res.json(dbProject);
-      });
-  });
-  app.delete("/projects/:id", function (req, res) {
-    db.Project.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(function (dbProject) {
-        res.json(dbProject);
-      });
-  });
-  // PUT route for updating project
-  app.put("/project", function (req, res) {
-    db.Project.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function (dbProject) {
-        res.json(dbProject);
-      });
-  });
-};

@@ -38,7 +38,7 @@ function App() {
           <Route exact path = '/project' component = {Project} />
           <Route exact path = '/report' component =  {Report_Params} />
           <Route exact path = '/time' component =    {Time_Sheet} />
-          <Route component  = {NoMatch} />
+          {/* <Route component  = {NoMatch} /> */}
 
         </Switch>
       </div>

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "P35c@d0r3",
+    "password": "testtest",
     "database": "horolog",
     "host": "localhost",
     "dialect": "mysql",
