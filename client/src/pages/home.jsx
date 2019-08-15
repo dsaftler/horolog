@@ -9,37 +9,37 @@ const Home = () => {
       <Col size="md-12">
         <Jumbotron>
           <h1>Home</h1>
-          <Link to={'./client'}>
+          <Link to={'client'}>
             <button variant="raised">
               Client
             </button>
           </Link>
-          <Link to={'./project'}>
+          <Link to={'project'}>
             <button variant="raised">
               Project
              </button>
           </Link>
-            <Link to={'./block'}>
+            <Link to={'block'}>
               <button variant="raised">
-                Timer Log
+                Timer Block
             </button>
             </Link>
-          <Link to={'./report_params'}>
+          <Link to={'report_params'}>
             <button variant="raised">
               Reports
               </button>
           </Link>
-          <Link to={'./time_sheet'}>
+          <Link to={'time_sheet'}>
             <button variant="raised">
               Time Sheets
               </button>
           </Link>
-          <Link to={'./login'}>
+          <Link to={'login'}>
             <button variant="raised">
               Login
           </button>
           </Link>
-           <Link to={'.signup'}>
+           <Link to={'signup'}>
              <button variant="raised">
                 SignUp
              </button>

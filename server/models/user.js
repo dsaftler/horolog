@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize')
 const bcrypt = require("bcryptjs");
-
+//! Foreign Key for permissionId
 module.exports = function (sequelize, DataTypes) {
   let User = sequelize.define("users", {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      len:[7,100],
       unique: {
         args: true,
         msg: 'Email address already in use!'
@@ -31,7 +32,9 @@ module.exports = function (sequelize, DataTypes) {
     role: {
       type: DataTypes.STRING
     }
-  });
+  },
+  {paranoid:true}
+  );
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);

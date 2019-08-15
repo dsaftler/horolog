@@ -15,7 +15,7 @@ const Block = () => {
     const clientId=888;
     const userId=777;
     const block = () => { alert(`Block Added to Horolog!  Name: ${inputs.firstname} ${inputs.lastname} Email: ${inputs.email}`) }
-    const { inputs, handleInputChange, handleSubmit } = useBlockForm(block);  
+    const { inputs, handleInputChange, handleSubmit } = useBlockForm(block); console.log('from Block form') 
   return (
     <Container fluid>
       <Row>
@@ -28,7 +28,7 @@ const Block = () => {
                 </button>
             </Link>
             {/* <form onSubmit={handleSubmit}> */}
-            <form action='/blocks/create' method='POST'>
+            <form action='/blocks/users/1/projects/1' method='POST'>
               <select value={clientId} onChange={handleInputChange} value={inputs.value}>
                 <option value={1}>Mind 4 Hire</option>
                 <option value={2}>SpareTime Productions</option>
@@ -46,7 +46,7 @@ const Block = () => {
                 <TextareaAutosize name='notes' onChange={handleInputChange} value={inputs.notes}></TextareaAutosize>
               </div>
               <div>
-                <RadioGroup aria-label="currclass" name="currclass" value={""} onChange={handleInputChange} value={inputs.value}>
+                <RadioGroup aria-label="curclass" name="curclass" value={""} onChange={handleInputChange} value={inputs.value}>
                   <FormControlLabel
                     value="DEV"
                     control={<Radio />}

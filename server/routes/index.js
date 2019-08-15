@@ -7,10 +7,12 @@ const userRoutes = require('./users');
 const blockRoutes = require('./blocks');
 const clientRoutes = require('./clients');
 const projectRoutes = require('./projects');
+const qryRoutes = require('./queries')
 // API Routes
 router.use('/blocks', blockRoutes);
 router.use('/clients', clientRoutes);
 router.use('/projects', projectRoutes);
+router.use('/queries', qryRoutes)
 router.use('/users', userRoutes);
 
 //  

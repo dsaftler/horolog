@@ -4,14 +4,14 @@ const userController = require("../controllers/userController");
 
 
 // Matches with "/users/"
-dbUser.route('/signup')
+dbUser.route('/signup/permissions/:permissionId')
   .post(userController.signup);
 dbUser.route('/login')
   .post(userController.login);
 dbUser.route('/logout')
   .post(userController.logout);
 // // Matches with "/api/books/:id"
-dbUser.route("/user/:id")
+dbUser.route("/users/:id")
   .get(userController.update);
   // .get(userController.findById)
   // .put(userController.update)

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-
+//! Foreign Key for projectId AND userId
 module.exports = function(sequelize, DataTypes) {
   const Block = sequelize.define('blocks', {
     bdate: { type: Sequelize.DATE, defaultValue: Sequelize.NOW },
@@ -34,34 +34,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM('Dev','O&E'),
       allowNull: false
     }
-  })
-  // / a getter for 'title' property /
-  // function() {
-    //   return this.getDataValue('title');
-    // }
-    // / a setter for 'title' property /
-    // function(title) {
-      //   return this.setDataValue('title', title.toString().toLowerCase());
-      // }
-      Block.associate = function (models) {
-        // projects belong to clients
-        Block.belongsTo(models.users, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-        // console.log(models);
-        Block.belongsTo(models.projects, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-      }; 
-      
-      Block.prototype.iMethod1 = function () { return true; }
-      Block.prototype.iMethod2 = function () { return true; }    
-      // const Pug = db.define('pugs', {/* etc*/ })
-      
+  });
+  
+  Block.associate = function (models) {
+    // projects belong to clients
+    Block.belongsTo(models.user, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    // console.log(models);
+    Block.belongsTo(models.projects, {
+      foreignKey: {
+        allowNull: false
+      }
+    }); 
+  };  
+    
+    Block.cMethod1= function () { return true; }
+    Block.prototype.iMethod1 = function () { return true; }
+    Block.prototype.iMethod2 = function () { return true; }    
+    // const Pug = db.define('pugs', {/* etc*/ })
+    
+  console.log('create block');
+  return Block;
+}
       // // instance methods are defined on the model's .prototype
       // Pug.prototype.celebrateBirthday = function () {
         //   // 'this' in an instance method refers to the instance itself
@@ -89,7 +86,6 @@ module.exports = function(sequelize, DataTypes) {
               // const foundPuppies = await Pug.findPuppies()
               // console.log('Here are the pups: ', foundPuppies)
               
-              Block.cMethod1= function () { return true; }
               // const Pug = db.define('pugs', {/* etc*/ })
               
               // // class methods are defined right on the model
@@ -103,7 +99,3 @@ module.exports = function(sequelize, DataTypes) {
                   // }
                   // const foundPuppies = await Pug.findPuppies()
                   // console.log('Here are the pups: ', foundPuppies)
-                  
-// console.log('create block');
-  return Block;
-}

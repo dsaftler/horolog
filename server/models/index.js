@@ -25,6 +25,8 @@ fs
     db[model.name] = model;
   });
 
+//Associations
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
@@ -33,5 +35,20 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+// //Associations
+// db.permission.hasMany(db.users)
+// db.user.belongsTo(db.permissions)
 
+
+// db.client.hasMany(db.projects)
+// db.project.belongsTo(db.clients)
+// db.block.belongsTo(db.users)
+// db.block.belongsTo(db.projects)
+
+
+// Object.keys(db).forEach(modelName => {
+//   if (db[modelName].associate) {
+//     db[modelName].associate(db);
+//   }
+// });
 module.exports = db;

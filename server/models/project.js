@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+//! Foreign Key for clientId
 
 module.exports = function(sequelize, DataTypes) {
   // console.log('create project 4');
@@ -22,15 +23,17 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false 
     }
-  });
-  // Project.associate = function(models) {
+  },
+  { paranoid: true }
+  );
+  Project.associate = function(models) {
   //   // projects belong to clients
-  //   Project.belongsTo(models.clients, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
+    Project.belongsTo(models.clients, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   // console.log('create project');
   return Project;
 }

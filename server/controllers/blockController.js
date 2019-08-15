@@ -4,6 +4,29 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   // GET route for getting all of the block
+  create:  function (req, res) {
+    const body = req.body
+     console.log(`User id ${req.params.userId}`);
+    console.log(`Project id ${req.params.projectId}`);
+    db.blocks.create({
+      notes: req.body.notes,
+      curclass: req.body.curclass,
+      projectId: req.params.projectId,
+      userId: req.params.userId
+    })
+    .then(function (dbBlock) {
+        res.json(dbBlock);
+      });
+     // User.findById(body.userId)
+     //    .then(() => blocks.create(body))
+       //  .then(blog => Promise.all(tags).then(storedTags => blog.addTags(storedTags)).then(() => blog))
+       //  .then(blog => Blog.findOne({ where: { id: blog.id }, include: [User, Tag] }))
+       //  .then(blogWithAssociations => res.json(blogWithAssociations))
+       //  .catch(err => res.status(400).json({ err: `User with id = [${body.userId}] doesn\'t exist.` }))
+     // todo : how do I pass in the foreign key projectId and userId?
+     // https://stackoverflow.com/questions/52776491/unable-to-insert-id-into-a-table-that-belongs-to-a-foreign-key-referenced-table
+ 
+   },
   findByUser: function (req, res) {
     db.blocks.findAll({
       include: [
@@ -44,29 +67,6 @@ module.exports = {
   },
   // POST route for saving a new block
   // bdate, minutes, edate, is_submitted & is_booked should be set to default  values
- create:  function (req, res) {
-   const body = req.body
-    console.log(`User id ${req.body.userId}`);
-   console.log(`Project id ${req.body.projectId}`);
-    // User.findById(body.userId)
-    //    .then(() => blocks.create(body))
-      //  .then(blog => Promise.all(tags).then(storedTags => blog.addTags(storedTags)).then(() => blog))
-      //  .then(blog => Blog.findOne({ where: { id: blog.id }, include: [User, Tag] }))
-      //  .then(blogWithAssociations => res.json(blogWithAssociations))
-      //  .catch(err => res.status(400).json({ err: `User with id = [${body.userId}] doesn\'t exist.` }))
-    db.blocks.create({
-      notes: req.body.notes,
-      curclass: req.body.curclass,
-      projectId: req.body.projectId,
-      userId: req.body.userId
-    })
-    .then(function (dbBlock) {
-        res.json(dbBlock);
-      });
-    // todo : how do I pass in the foreign key projectId and userId?
-    // https://stackoverflow.com/questions/52776491/unable-to-insert-id-into-a-table-that-belongs-to-a-foreign-key-referenced-table
-
-  },
   destroy: function (req, res) {
     db.blocks.destroy({
       where: {

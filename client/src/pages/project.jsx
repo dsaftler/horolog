@@ -31,7 +31,7 @@ function Project() {
                 </button>
               </Link>
             <h1>Project</h1>
-            <form action='/projects' method='POST'>
+            <form action='projects/clients/1' method='POST'>
               <div>
                 <label>Client</label>
                 <select onChange={handleInputChange} value={inputs.value}>

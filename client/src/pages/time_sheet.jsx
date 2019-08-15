@@ -1,59 +1,45 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
-// import PopoverMenu from 'wix-style-react/beta/PopoverMenu';
-// import IconButton from 'wix-style-react/IconButton';
-// import Calendar from 'wix-style-react/Calendar';
-// import TimePicker from 'wix-style-react/TimeInput';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
-class Time_Sheet extends Component {
-  state = {
-    bdate: '',
-    edate: "",
-    client: 0,
-    projects: []
-  };
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-  handleFormSubmit = event => {
-    event.preventDefault();
-  };
-  render() {
-    return (
-      <Container fluid>
-        <h1>Time Sheet</h1>
-        {/* <Calendar
-          // onChange={value => setState({
-          //   value
-          // })}
-          selectionMode="day"
-        /> */}
-        {/* <TimePicker
-          dashesWhenDisabled
-          onChange={moment => moment.format("h:mm a")}
-        /> */}
-        {/* <Layout cols={1} justifyItems="center"> */}
-          {/* <PopoverMenu
-            triggerElement={
-            <TextButton suffixIcon={<Icons.ChevronDown />}>Prefix</TextButton>
-            }
-              >
-            <PopoverMenu.MenuItem text="Add" prefixIcon={<Icons.Add />} />
-              <PopoverMenu.MenuItem text="Edit" prefixIcon={<Icons.Edit />} />
-              <PopoverMenu.MenuItem
-              text="Delete"
-                prefixIcon={<Icons.Delete />}
-                skin="destructive"
-              />
-            </PopoverMenu> */}
 
-          {/* </Layout> */}
-      </Container>
-     );
-  }
+import { useTimeSheetForm } from './CustomHooks'
+
+const TimeSheet = () => {
+  const timesheet = () => { alert(`Time Sheet}`) }
+  const { inputs, handleInputChange, handleSubmit } = useTimeSheetForm(timesheet);
+
+  return (
+    <Container fluid>
+      <Row>
+        <Col size="md-12">
+          <Jumbotron>
+            <Link to={'/'}>
+              <button variant="raised">
+                Home
+                </button>
+            </Link>    
+            <h1>Time Sheet</h1>
+            <form action='queries/timesheet' method='GET'>
+            <div>
+                <label>calendar start date</label>
+              </div>
+              <div>
+                <label>calendar end date</label>
+              </div>
+              <div>
+                <label>include submitted</label>
+              </div>      
+              <div>
+                <label>include booked</label>
+              </div>                        
+              <button type='submit'>Report</button>
+            </form>
+          </Jumbotron>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
-export default Time_Sheet;
+
+export default TimeSheet;

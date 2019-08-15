@@ -3,22 +3,22 @@ const dbBlocks = require("express").Router();
 const blockController = require("../controllers/blockController");
 
 // Matches with "/api/blocks"
-dbBlocks.route("/blocks")
- .get(blockController.findAll)
- .post(blockController.create);
+
+dbBlocks.route("/users/:userId/projects/:projectId")
+.post(blockController.create);
 
 // Matches with "/api/blocks/:id"
 // router
-dbBlocks.route("/blocks:id")
+dbBlocks.route('/users/:userId')
+  .get(blockController.findByUser)
+
+dbBlocks.route("/:id")
   .get(blockController.findByPk)
   .put(blockController.update)
   .delete(blockController.destroy);
 // console.log('block-routes')
 
-dbBlocks.route('/blocks:userId')
-  .get(blockController.findByUser);
-
-dbBlocks.route('/blocks:projectId')
+dbBlocks.route('/projects/:projectId')
   .get(blockController.findByProject);
 
 module.exports = dbBlocks;

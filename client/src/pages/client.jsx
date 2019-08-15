@@ -12,6 +12,44 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' },
 ];
+function Client() {
+  const client = () => {alert(`Client ${inputs.name} Active: ${inputs.is_active}`)}
+  const { inputs, handleInputChange, handleSubmit } = useForm(client);
+  
+  return (
+    <Container fluid>
+      <Row>
+        <Col size="md-12">
+          <Jumbotron>
+            <Link to={'/'}>
+              <button variant="raised">
+                Home
+                </button>
+            </Link>            
+            <h1>Client</h1>
+            <form action='/clients' method='POST'>            
+            {/* <form onSubmit={handleSubmit}> */}
+            <div>
+              <label>Client Name</label>
+              <input type='text' name='name' onChange={handleInputChange} value={inputs.name} required />
+            </div>
+            <div>
+              <label>Active: </label>
+              {/* //Todo  what is boolean?  how to call the data */}
+              <input type="checkbox" name="is_active" onChange={handleInputChange} value={inputs.is_active} />
+            </div>
+
+              <button type='submit'>Save</button>
+            </form>
+          </Jumbotron>
+
+        </Col>
+      </Row>
+
+    </Container>
+  );
+}
+export default Client;
 // class Client extends React.Component {
 //   state = {
 //     selectedOption: null,
@@ -34,48 +72,3 @@ const options = [
 //     );
 //   }
 // }
-function Client() {
-  const client = () => {alert(`Client ${inputs.name} Active: ${inputs.is_active}`)}
-  const { inputs, handleInputChange, handleSubmit } = useForm(client);
-
-  return (
-    <Container fluid>
-      <Row>
-        <Col size="md-12">
-          <Jumbotron>
-            <Link to={'/'}>
-              <button variant="raised">
-                Home
-                </button>
-            </Link>            
-            <h1>Client</h1>
-            {/* <form onSubmit={handleSubmit}> */}
-            <form action='/client/create' method='POST'>            
-            <div>
-              <label>Client Name</label>
-              <input type='text' name='name' onChange={handleInputChange} value={inputs.name} required />
-            </div>
-            <div>
-              <label>Active: </label>
-              {/* //Todo  what is boolean?  how to call the data */}
-              <input type="checkbox" name="is_active" onChange={handleInputChange} value={inputs.is_active} />
-            </div>
-            {/* <Select
-              isMulti
-              name='client'
-              value={selectedOption}
-              onChange={handleInputChange}
-              options={options}
-            /> */}
-              <button type='submit'>Save</button>
-            </form>
-          </Jumbotron>
-
-        </Col>
-      </Row>
-
-    </Container>
-  );
-}
-
-export default Client;

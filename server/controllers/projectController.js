@@ -5,12 +5,14 @@ const db = require("../models");
 module.exports =  {
   create: function (req, res) {
     const body = req.body;
-    console.log(`projectController.project ${req.body.name}`);
+    console.log(`projectController.project ${req.body.brief}`);
+    console.log(`projectController.ClientId ${req.param.clientId}`);
  
     db.projects.create({
       brief: req.body.brief,
       narrative: req.body.narrative,
-      defclass: req.body.defclass
+      defclass: req.body.defclass,
+      clientId: req.params.clientId
     })
       .then(function (dbProject) {
         res.json(dbProject);

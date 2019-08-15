@@ -1,11 +1,12 @@
 //TODO convert this to MySQL
 const Sequelize = require('sequelize')
 const SQLValues = require('sequelize-values')()
+const validate = require('validate.js');
 const db = require('../models');
 const passport = require("../config/passport");
 
-// module.exports = function (app)
 module.exports = {
+// module.exports = function (app)
   signup: function (req, res) {    
     console.log(`userController.signup ${req.body.lastname}`);
     const body = req.body;
@@ -13,9 +14,11 @@ module.exports = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password1
+      password: req.body.password1,
+      permissionId: req.params.permissionId
     })
     .then(function () {
+      return res.redirect('/login')
       return res.status(200).res.jsonp([body])
         // { message: "user created", userid: users.id  });
         })
@@ -40,8 +43,30 @@ module.exports = {
     req.logout();
     res.redirect("/");
   },
-}
-  // .catch(function (err) {
+  update: function (req, res) {
+    db.users.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbBlock) {
+        res.json(dbBlock);
+      });
+    }
+  }
+      // app.put("/user", function (req, res) {
+      //   db.User.update(req.body,
+      //     {
+      //       where: {
+      //         id: req.body.id
+      //       }
+      //     })
+      //     .then(function (dbUser) {
+      //       res.json(dbUser);
+      //     });
+      // });
+    // .catch(function (err) {
   //   return res.status(400).json({ message: "issues trying to connect to database" });
   //     })
   // .then(newUser => {
@@ -173,14 +198,3 @@ module.exports = {
   //     });
   // });
   // // PUT route for updating user
-  // app.put("/user", function (req, res) {
-  //   db.User.update(req.body,
-  //     {
-  //       where: {
-  //         id: req.body.id
-  //       }
-  //     })
-  //     .then(function (dbUser) {
-  //       res.json(dbUser);
-  //     });
-  // });

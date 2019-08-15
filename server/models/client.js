@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: true 
     }
-  });
+  },
+   { paranoid: true }
+  );
   Client.associate = function (models) {
   // projects belong to clients
     // console.log(models);

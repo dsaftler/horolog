@@ -2,10 +2,12 @@
 const projectController=require('../controllers/projectController')
 const dbProjects = require("express").Router();
 
-dbProjects.route("/projects")
+dbProjects.route("/clients/:clientId")
   .post(projectController.create)
+
+dbProjects.route("/") 
   .get(projectController.findAll);
-console.log('from dbProjects')
+
 // Matches with "/api/blocks/:id"
 // router
 dbProjects.route("/projects:id")

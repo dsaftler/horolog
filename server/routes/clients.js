@@ -2,7 +2,7 @@
 const dbClients = require("express").Router();
 const clientController = require("../controllers/clientController");
 
-dbClients.route("/clients")
+dbClients.route("/")
   .post(clientController.create)
   .get(clientController.findAll);
 
