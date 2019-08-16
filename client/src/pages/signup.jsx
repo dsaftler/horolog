@@ -13,10 +13,10 @@ const Signup = () => {
         <Col size="md-12">
           <Jumbotron>
             <h1>Sign Up</h1>
-      <form action='users/signup' 
-      method='POST'>
-      {/* <form action='users/signup/permissions/1'
-                method='POST'> */}
+      {/* <form action='users/signup' 
+      method='POST'> */}
+      <form action='users/signup/permissions/1'
+                method='POST'>
       <div>
         <label>First Name</label>
         <input type='text' name='firstname' onChange={handleInputChange} value={inputs.firstname} required />

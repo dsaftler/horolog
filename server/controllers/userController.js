@@ -28,17 +28,19 @@ module.exports = {
     })
   },
   login: function (req, res) {
-    app.post("/", function (req, res, next) {
+   db.users.findOne({
+     where: { email: req.body.email} )
       passport.authenticate("local", {
         successRedirect: "/blocks",
         failureRedirect: "/users/login"
       })
-        // .then {
-          //  req.session.userId = res.userId
-          // send info as json
-          (req, res, next);
+    .then(req.session.userId = res.userId)
+    .then(function (dbUser) {
+          res.json(dbUser);
         });
-      },
+      // send info as json
+
+  },
   logout: function (req, res) {
     req.logout();
     res.redirect("/");
@@ -50,8 +52,8 @@ module.exports = {
           id: req.body.id
         }
       })
-      .then(function (dbBlock) {
-        res.json(dbBlock);
+      .then(function (dbUser) {
+        res.json(dbUser);
       });
     }
   }

@@ -10,7 +10,7 @@ dbProjects.route("/")
 
 // Matches with "/api/blocks/:id"
 // router
-dbProjects.route("/projects:id")
+dbProjects.route("/:id")
   .get(projectController.findByPk)
   .put(projectController.update)
   .delete(projectController.destroy);

@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
   
   Block.associate = function (models) {
     // projects belong to clients
-    Block.belongsTo(models.user, {
+    Block.belongsTo(models.users, {
       foreignKey: {
         allowNull: false
       }

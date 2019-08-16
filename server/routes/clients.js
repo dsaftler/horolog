@@ -8,7 +8,7 @@ dbClients.route("/")
 
 // Matches with "/api/blocks/:id"
 // router
-dbClients.route("/clients:id")
+dbClients.route("/:id")
   .get(clientController.findByPk)
   .put(clientController.update)
   .delete(clientController.destroy);

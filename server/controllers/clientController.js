@@ -1,6 +1,6 @@
 //TODO convert this to MySQL
-const Sequelize = require('sequelize')
-const SQLValues = require('sequelize-values')()
+// const Sequelize = require('sequelize')
+// const SQLValues = require('sequelize-values')()
 const db = require("../models");
 console.log('clientController');
 

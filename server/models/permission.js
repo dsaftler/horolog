@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
   Permission.associate = function (models) {
     // projects belong to clients
     // console.log(models);
-    Permission.hasMany(models.user, {
+    Permission.hasMany(models.users, {
       foreignKey: {
         allowNull: false
       }

@@ -11,7 +11,7 @@ dbUser.route('/login')
 dbUser.route('/logout')
   .post(userController.logout);
 // // Matches with "/api/books/:id"
-dbUser.route("/users/:id")
+dbUser.route("/:id")
   .get(userController.update);
   // .get(userController.findById)
   // .put(userController.update)
