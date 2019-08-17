@@ -7,43 +7,74 @@ const passport = require("../config/passport");
 
 module.exports = {
 // module.exports = function (app)
+  async emailExists(email): function(req,res) {
+  // prevent duplicate of email
+  // return use if exists, false if not taken
+    if (req.email === null || req.email === undefined) {
+      throw new Error('No email was passed in')
+    }
+    const user = await db.users.findOne({
+      where: { email }
+    });
+
+    if (user) { return user };
+
+    return false;
+  },
   signup: function (req, res) {    
     console.log(`userController.signup ${req.body.lastname}`);
     const body = req.body;
-    db.users.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: req.body.password1,
-      permissionId: req.params.permissionId
-    })
-    .then(function () {
-      return res.redirect('/login')
-      return res.status(200).res.jsonp([body])
-        // { message: "user created", userid: users.id  });
-        })
-    .catch(function (err) {
-      console.log(JSON.parse(JSON.stringify(err)));
-      return res.redirect('/signup')
-    })
-  },
-  login: function (req, res) {
-   db.users.findOne({
-     where: { email: req.body.email} )
-      passport.authenticate("local", {
-        successRedirect: "/blocks",
-        failureRedirect: "/users/login"
+    if (emailExists(req.body.email)) {
+      console.log(`Email exists ${req.body.email}`)
+    } else {
+        db.users.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password1,
+        permissionId: req.params.permissionId
       })
-    .then(req.session.userId = res.userId)
-    .then(function (dbUser) {
-          res.json(dbUser);
-        });
-      // send info as json
-
+      .then(function () {
+        return res.redirect('/login')
+        return res.status(200).res.jsonp([body])
+          // { message: "user created", userid: users.id  });
+          })
+      .catch(function (err) {
+        console.log(JSON.parse(JSON.stringify(err)));
+        return res.redirect('/signup')
+      })
+    }
   },
+ // ! MOVED to routes/auth.js
+  // login: passport.authenticate("local"),
+  //   function (req, res) {
+  //     res.redirect("/blocks");
+        // , {
+        //   successRedirect: "/blocks",
+        //   failureRedirect: "/users/login"
+        // }),
+    //  db.users.findOne({
+    // where: { email: req.body.email}, 
+    // .then(req.session.userId = res.userId)
+    // .then(function (dbUser) {
+    //       res.json(dbUser);
+    //     });
+      // send info as json
+  //  }
+  // },
   logout: function (req, res) {
     req.logout();
     res.redirect("/");
+  },
+  findByPk: function (req, res) {
+    db.users.findByPk({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbUser) {
+        res.json(dbUser);
+      });
   },
   update: function (req, res) {
     db.users.update(req.body,

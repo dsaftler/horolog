@@ -1,6 +1,6 @@
 import  {useState} from 'react' 
 // const {emailExists} = require('../../../server/services/user_db')
-
+import axios from axios
 export const useForm = (callback) => {
   const [inputs, setInputs] = useState({});
   const handleSubmit = (event) => {
@@ -66,10 +66,14 @@ export const useSignUpForm = (callback) => {
 export const useLoginForm = (callback) => {
   const [inputs, setInputs] = useState({});
   const handleSubmit = (event) => {
-    if (event) {
-      event.preventDefault();
-    }
-    callback();
+  event.preventDefault();
+  axios
+    .post('/auth', inputs)
+    .then(response => {console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
   const handleInputChange = (event) => {
     event.persist();

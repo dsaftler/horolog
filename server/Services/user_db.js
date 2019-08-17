@@ -14,4 +14,14 @@ async function emailExists(email) {
   return false;
 }
 
-module.exports = {emailExists};
+async function findUserById(userId) {
+  if(!userId) throw new Error('Invalid arg: UserId');
+  const user = await db.users.findOne({
+    where: {id: userId}
+  });
+  if(user) {return user};
+ 
+  return null;
+}
+
+module.exports = {emailExists, findUserById};

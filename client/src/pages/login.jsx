@@ -19,8 +19,8 @@ const Login = () => {
                 </button>
             </Link>  
             <h1>Login</h1>
-            <form action='/users/login' method='POST'>
-             
+            <form>
+              {/* <form action='/auth' method='POST'> */}
               <div>
                 <label>Email Address</label>
                 <input type='email' name='email' onChange={handleInputChange} value={inputs.email} required />
@@ -30,7 +30,7 @@ const Login = () => {
                 <input type='text' name='password' onChange={handleInputChange} value={inputs.password} />
               </div>
 
-              <button type='submit'>Login</button>
+              <button onClick={handleSubmit}>Login</button>
             </form>
           </Jumbotron>
         </Col>
