@@ -3,63 +3,76 @@ const Sequelize = require('sequelize')
 const SQLValues = require('sequelize-values')()
 const validate = require('validate.js');
 const db = require('../models');
+const dbUser = require('../models/user.js');
 const passport = require("../config/passport");
 
 module.exports = {
 // module.exports = function (app)
-  async emailExists(email): function(req,res) {
-  // prevent duplicate of email
-  // return use if exists, false if not taken
-    if (req.email === null || req.email === undefined) {
-      throw new Error('No email was passed in')
-    }
-    const user = await db.users.findOne({
-      where: { email }
-    });
+  // const emailExists = (email)= function(req,res) {
+  // // prevent duplicate of email
+  // // return use if exists, false if not taken
+  //   if (req.email === null || req.email === undefined) {
+  //     throw new Error('No email was passed in')
+  //   }
+  //   const user = await db.users.findOne({
+  //     where: { email }
+  //   });
 
-    if (user) { return user };
+  //   if (user) { return user };
 
-    return false;
-  },
+ checkEmailExists: function(req,res) {
+    const body = req.body;
+    console.log(req.body.email)
+  //   db.users.emailExists(
+  //     {
+  //     req.body.email})
+  //   .then (alreadyExists);
+   },
   signup: function (req, res) {    
     console.log(`userController.signup ${req.body.lastname}`);
+    debugger
+    console.log(`userController.signup ${req.params.permissions}`);
     const body = req.body;
-    if (emailExists(req.body.email)) {
-      console.log(`Email exists ${req.body.email}`)
-    } else {
-        db.users.create({
+    // db.users.findOne({
+    //    where: { email: req.body.email},
+    // .then(function (dbUser) {
+    //   res.json(dbUser);
+    //   console.log("email exists");
+    //   return res.redirect('/signup')
+    // }); 
+   
+    
+    db.users.create({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
         password: req.body.password1,
         permissionId: req.params.permissionId
       })
-      .then(function () {
-        return res.redirect('/login')
-        return res.status(200).res.jsonp([body])
-          // { message: "user created", userid: users.id  });
-          })
+      .then(function (dbUser) {
+        res.json(dbUser);
+      })
       .catch(function (err) {
         console.log(JSON.parse(JSON.stringify(err)));
         return res.redirect('/signup')
-      })
-    }
+      });
   },
  // ! MOVED to routes/auth.js
-  // login: passport.authenticate("local"),
-  //   function (req, res) {
-  //     res.redirect("/blocks");
-        // , {
-        //   successRedirect: "/blocks",
-        //   failureRedirect: "/users/login"
-        // }),
-    //  db.users.findOne({
-    // where: { email: req.body.email}, 
-    // .then(req.session.userId = res.userId)
-    // .then(function (dbUser) {
-    //       res.json(dbUser);
-    //     });
-      // send info as json
+  // login: 
+  // // passport.authenticate("local"),
+  //   // function (req, res) {
+  //   //   res.redirect("/blocks");
+  //   //     , {
+  //   //       successRedirect: "/blocks",
+  //   //       failureRedirect: "/users/login"
+  //   //     },
+  //    db.users.findOne({
+  //   where: { email: req.body.email}, 
+  //   .then(req.session.userId = res.userId)
+  //   .then(function (dbUser) {
+  //         res.json(dbUser);
+  //       });
+  //     send info as json
   //  }
   // },
   logout: function (req, res) {

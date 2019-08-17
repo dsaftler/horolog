@@ -1,6 +1,5 @@
 import  {useState} from 'react' 
-// const {emailExists} = require('../../../server/services/user_db')
-import axios from axios
+import axios from 'axios'
 export const useForm = (callback) => {
   const [inputs, setInputs] = useState({});
   const handleSubmit = (event) => {
@@ -56,6 +55,11 @@ export const useSignUpForm = (callback) => {
   const handleInputChange = (event) => {
     event.persist();
     setInputs(input => ({ ...inputs, [event.target.name]: event.target.value }));
+  }
+  const validEmail = (event) => {
+    // valid calls get.(users/signup/checkEmailExists)
+
+
   }
   return {
     handleSubmit,
