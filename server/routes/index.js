@@ -3,19 +3,19 @@ const express = require('express');
 const path = require("path");
 const router = require("express").Router(); 
 
+const authRoutes = require('./auth');
 const blockRoutes = require('./blocks');
 const clientRoutes = require('./clients');
 const projectRoutes = require('./projects');
 const qryRoutes = require('./queries')
 const userRoutes = require('./users');
 // API Routes
-router.use('/blocks', blockRoutes);
-router.use('/clients', clientRoutes);
-router.use('/projects', projectRoutes);
-router.use('/queries', qryRoutes)
-router.use('/users', userRoutes);
+router.use('/auth', authRoutes) // just calls Passport from .auth
+router.use('/blocks', blockRoutes); // dbBlocks
+router.use('/clients', clientRoutes); //dbClients
+router.use('/projects', projectRoutes); //dbProjects
+router.use('/queries', qryRoutes); //dbQueries
+router.use('/users', userRoutes); //dbUsers
 
-//  
-// If no API routes are hit, send the React app
 
 module.exports = router;

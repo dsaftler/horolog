@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
     Block.prototype.iMethod2 = function () { return true; }    
     // const Pug = db.define('pugs', {/* etc*/ })
     
-  console.log('create block');
+  // console.log('create block');
   return Block;
 }
       // // instance methods are defined on the model's .prototype

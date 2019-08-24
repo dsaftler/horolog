@@ -1,4 +1,3 @@
-// TODO change the router setup
 const projectController=require('../controllers/projectController')
 const dbProjects = require("express").Router();
 

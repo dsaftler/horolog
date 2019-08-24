@@ -1,7 +1,7 @@
 # local
 .DS_Store
-.vscode
 .history
+.vscode
 docs/
 # Logs
 logs

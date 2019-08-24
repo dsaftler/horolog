@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Input, FormBtn } from '../components/Form';
+// import { Input, FormBtn } from '../components/Form';
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { useLoginForm } from './CustomHooks'
@@ -19,8 +19,7 @@ const Login = () => {
                 </button>
             </Link>  
             <h1>Login</h1>
-            <form>
-              {/* <form action='/auth' method='POST'> */}
+            <form onSubmit={handleSubmit}>
               <div>
                 <label>Email Address</label>
                 <input type='email' name='email' onChange={handleInputChange} value={inputs.email} required />
@@ -29,7 +28,6 @@ const Login = () => {
                 <label>Password</label>
                 <input type='text' name='password' onChange={handleInputChange} value={inputs.password} />
               </div>
-
               <button onClick={handleSubmit}>Login</button>
             </form>
           </Jumbotron>

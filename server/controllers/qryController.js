@@ -23,5 +23,24 @@ module.exports = {
       .then(function (dbBlock) {
         res.json(dbBlock);
       });
-  }
-}
+  },
+
+
+// here we tell the engine we're working async
+  apiGetAll: async function (req, res) {
+    try {
+    // here we tell the engine to PAUSE EXECUTION and wait for a response
+    // once it has a reponse, assign it to the variable 'resp' and continue
+    const resp = await fetch(URL)
+      console.log(resp)
+    // this code will NOT run until 'resp' has been assigned
+    // and then the program will PAUSE until it gets a reponse
+    const data = await response.json()
+
+    // this code only runs when data is assigned.
+      return data
+    } catch (err) {
+      console.log(err)
+    }
+  }  
+};

@@ -1,23 +1,32 @@
 import  {useState} from 'react' 
-import axios from 'axios'
-export const useForm = (callback) => {
+import { Redirect } from 'react-router-dom'
+import API from "../utils/API";
+import axios from 'axios';
+
+export const useClientForm = (callback) => {
   const [inputs, setInputs] = useState({});
-  const handleSubmit = (event) => {
-    if (event) {
-      event.preventDefault();
+  
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    if (inputs.name) {
+      API.saveClient({
+        name: inputs.name,
+       is_archived: inputs.is_archived
+      })
+      .then(response =>  console.log('Client response' + response.body.id))
+      .catch(err => console.log(err))  ;
     }
-    callback();
   }
   const handleInputChange = (event) => {
     event.persist();
     setInputs(input => ({ ...inputs, [event.target.name]: event.target.value }));
   }
   return {
-    handleSubmit,
+    handleFormSubmit,
     handleInputChange,
     inputs
   };
-} 
+}
 
 export const useBlockForm = (callback) => {
   const [inputs, setInputs] = useState({});
@@ -26,7 +35,7 @@ export const useBlockForm = (callback) => {
       event.preventDefault();
     }
     callback();
-  }
+  } 
   const handleInputChange = (event) => {
     event.persist();
     setInputs(input => ({...inputs, [event.target.name]: event.target.value}));
@@ -43,15 +52,48 @@ export const useSignUpForm = (callback) => {
     if (event) {
       event.preventDefault();
       // if (emailExists(inputs.email)) {
-      // //  from inputs: check for existing email, valid fields 
-      // //  then pass to Post
-      // } else {
-      //   // throw an error ?
-      // }
-
+        // //  from inputs: check for existing email, valid fields 
+        // //  then pass to Post
+        // } else {
+          //   // throw an error ?
+          // }
+          
+        }
+        callback();
+      }
+      const handleInputChange = (event) => {
+        event.persist();
+        setInputs(input => ({ ...inputs, [event.target.name]: event.target.value }));
+      }
+      return {
+        handleSubmit,
+        handleInputChange,
+        inputs
+      };
     }
-    callback();
-  }
+export const useLoginForm = (callback) => {
+      const [inputs, setInputs] = useState({});
+      const handleSubmit = (event) => {
+        if (event) {
+          event.preventDefault();
+        }
+        axios
+        .post('auth/login', {
+          email: inputs.email,
+          password: inputs.password})
+      .then(response => {
+        console.log('login response')
+        console.log(response)
+        if (response.status === 200) {
+          const UserId = response.data.id
+        }
+      })
+      // return <Redirect to={{  }}></Redirect>
+      // redirect to Blocks with query
+      .catch(error => {
+        console.log(`login error: ${error}`)
+      })
+    }
   const handleInputChange = (event) => {
     event.persist();
     setInputs(input => ({ ...inputs, [event.target.name]: event.target.value }));
@@ -60,28 +102,6 @@ export const useSignUpForm = (callback) => {
     // valid calls get.(users/signup/checkEmailExists)
 
 
-  }
-  return {
-    handleSubmit,
-    handleInputChange,
-    inputs
-  };
-}
-export const useLoginForm = (callback) => {
-  const [inputs, setInputs] = useState({});
-  const handleSubmit = (event) => {
-  event.preventDefault();
-  axios
-    .post('/auth', inputs)
-    .then(response => {console.log(response)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
-  const handleInputChange = (event) => {
-    event.persist();
-    setInputs(input => ({ ...inputs, [event.target.name]: event.target.value }));
   }
   return {
     handleSubmit,
@@ -143,3 +163,27 @@ export const useReportForm = (callback) => {
     inputs
   };
 }
+
+export const useForm = (callback) => {
+  const [inputs, setInputs] = useState({});
+  const handleSubmit = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
+    callback();
+  }
+  const handleInputChange = (event) => {
+    event.persist();
+    setInputs(input => ({ ...inputs, [event.target.name]: event.target.value }));
+  }
+  return {
+    handleSubmit,
+    handleInputChange,
+    inputs
+  };
+// export default {
+  //   getRecipes: function (query) {
+    //     return axios.get("/api/recipes", { params: { q: query } });
+    //   }
+    // };
+} 

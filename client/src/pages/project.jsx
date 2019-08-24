@@ -50,7 +50,7 @@ function Project() {
                 <TextareaAutosize name='narrative' onChange={handleInputChange} value={inputs.narrative}></TextareaAutosize>
                 </div>
               <div>
-                  <RadioGroup aria-label="defclass" name="defclass" value={""} onChange={handleInputChange} value={inputs.value}>
+                  <RadioGroup aria-label="defclass" name="defclass" value='' onChange={handleInputChange} value={inputs.value}>
                     <FormControlLabel
                       value="DEV"
                       control={<Radio />}

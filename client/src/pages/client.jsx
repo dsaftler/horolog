@@ -1,20 +1,15 @@
-import React, { Component } from "react";
-import Select from 'react-select';
+import React from "react";
+// import Select from 'react-select';
 // import Creatable from 'react-select/creatable';
 // import makeAnimated from 'react-select/animated';
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { useClientForm } from './CustomHooks'
-import { useForm } from './CustomHooks'
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
+
 function Client() {
-  const client = () => {alert(`Client ${inputs.name} Active: ${inputs.is_active}`)}
-  const { inputs, handleInputChange, handleSubmit } = useForm(client);
+  const client = () => {alert(`Client ${inputs.name} Archived: ${inputs.is_archived}`)}
+  const { inputs, handleInputChange, handleFormSubmit } = useClientForm(client);
   
   return (
     <Container fluid>
@@ -27,16 +22,16 @@ function Client() {
                 </button>
             </Link>            
             <h1>Client</h1>
-            <form action='/clients' method='POST'>            
-            {/* <form onSubmit={handleSubmit}> */}
+            {/* <form action='/clients' method='POST'>             */}
+            <form onSubmit={handleFormSubmit}>
             <div>
               <label>Client Name</label>
               <input type='text' name='name' onChange={handleInputChange} value={inputs.name} required />
             </div>
             <div>
-              <label>Active: </label>
+              <label>Archived ?</label>
               {/* //Todo  what is boolean?  how to call the data */}
-              <input type="checkbox" name="is_active" onChange={handleInputChange} value={inputs.is_active} />
+                <input type="checkbox" name="is_archived" onChange={handleInputChange} value={inputs.is_archived} />
             </div>
 
               <button type='submit'>Save</button>

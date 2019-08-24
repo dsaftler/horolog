@@ -1,5 +1,7 @@
 import React from "react";
 // import ReactDOM from "react-dom"
+import API from "./utils/API";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Select from 'react-select';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -22,8 +24,9 @@ import "./App.css";
 
 console.log('app.js');
 
-function App() {
+const App = () => {
   return (
+
     
     <Router>
       <CssBaseline />
@@ -46,21 +49,5 @@ function App() {
   );
 }
 
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <div className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h2>Welcome to React</h2>
-//         </div>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
 
 export default App;

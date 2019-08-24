@@ -7,6 +7,8 @@ const blockController = require("../controllers/blockController");
 dbBlocks.route("/users/:userId/projects/:projectId")
 .post(blockController.create);
 
+dbBlocks.route('/')
+.get(blockController.findAll);
 // Matches with "/api/blocks/:id"
 // router
 dbBlocks.route('/users/:userId')

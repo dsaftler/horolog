@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
@@ -24,12 +24,12 @@ const Home = () => {
                 Timer Block
             </button>
             </Link>
-          <Link to={'report_params'}>
+          <Link to={'report'}>
             <button variant="raised">
               Reports
               </button>
           </Link>
-          <Link to={'time_sheet'}>
+          <Link to={'time'}>
             <button variant="raised">
               Time Sheets
               </button>

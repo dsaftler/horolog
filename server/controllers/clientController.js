@@ -2,7 +2,7 @@
 // const Sequelize = require('sequelize')
 // const SQLValues = require('sequelize-values')()
 const db = require("../models");
-console.log('clientController');
+// console.log('clientController');
 
 module.exports = {
   // GET route for getting all of the client
@@ -13,7 +13,7 @@ module.exports = {
         name: req.body.name,
       })
     .then(function (dbClient) {
-      res.json(dbClient);
+      res.send(dbClient);
     });
   },
     // .get("/clients/", 

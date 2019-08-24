@@ -4,9 +4,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    is_active: {
+    is_archived: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true 
+      defaultValue: false 
+    },
+    bill_rate_OE: {
+      type: DataTypes.DECIMAL(5, 2)
+    },
+    bill_rate_DEV: {
+      type: DataTypes.DECIMAL(5, 2)
     }
   },
    { paranoid: true }

@@ -13,11 +13,11 @@ dbUser.route("/signup/checkEmailExists")
   
 dbUser.route('/logout')
   .post(userController.logout);
+
 // // Matches with "/api/books/:id"
 dbUser.route("/:id")
-  .get(userController.update);
-  // .get(userController.findById)
-  // .put(userController.update)
-  // .delete(userController.remove);
+  .get(userController.findByPk)
+  .put(userController.update)
+  .delete(userController.remove);
 
 module.exports = dbUser;

@@ -22,6 +22,15 @@ module.exports = function(sequelize, DataTypes) {
     is_archived: {
       type: DataTypes.BOOLEAN,
       defaultValue: false 
+    },
+    bill_rate_OE: {
+      type: DataTypes.DECIMAL(5,2)
+    },
+    bill_rate_DEV: {
+      type: DataTypes.DECIMAL(5,2)
+    },
+    fixed_price: {
+      type: DataTypes.DECIMAL(8,2)
     }
   },
   { paranoid: true }
