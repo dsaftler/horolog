@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 //! Foreign Key for projectId AND userId
+
 module.exports = function(sequelize, DataTypes) {
   const Block = sequelize.define('blocks', {
     bdate: { type: Sequelize.DATE, defaultValue: Sequelize.NOW },
@@ -33,8 +34,13 @@ module.exports = function(sequelize, DataTypes) {
     curclass: {
       type: DataTypes.ENUM('Dev','O&E'),
       allowNull: false
-    }
-  });
+    },
+    billed_rate: {
+      type: DataTypes.DECIMAL(6, 2)
+    },
+  },
+  { paranoid: true }
+  );
   
   Block.associate = function (models) {
     // projects belong to clients

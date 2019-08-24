@@ -24,10 +24,10 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false 
     },
     bill_rate_OE: {
-      type: DataTypes.DECIMAL(5,2)
+      type: DataTypes.DECIMAL(6,2)
     },
     bill_rate_DEV: {
-      type: DataTypes.DECIMAL(5,2)
+      type: DataTypes.DECIMAL(6,2)
     },
     fixed_price: {
       type: DataTypes.DECIMAL(8,2)
